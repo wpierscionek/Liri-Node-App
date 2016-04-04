@@ -7,15 +7,15 @@ var client = new Twitter({
     access_token_secret: 'Ul4jDMB8qHfJKya0GRztjzhi8tG7LQ1F5Rio5oJit8M2h'
 });
 var count = 0;
-	util = require('util');
-client.stream('statuses/filter', {track: 'love'}, function(stream) {
-  stream.on('data', function(data) {
-    console.log(util.inspect(data));
+util = require('util');
+client.stream('statuses/filter', { track: 'love' }, function(stream) {
+    stream.on('data', function(data) {
+        console.log(util.inspect(data));
         // stream.destroy();
         // process.exit(0);
-  });
- 
-  stream.on('error', function(error) {
-    throw error;
-  });
+    });
+
+    stream.on('error', function(error) {
+        throw error;
+    });
 });
