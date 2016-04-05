@@ -4,6 +4,8 @@
 var fs = require('fs');
 var keys = require('./keys.js');
 var Twitter = require('twitter');
+var spotify = require('spotify');
+var request = require('request');
 var userInput = process.argv[2];
 var value = process.argv[3];
 //====================
@@ -36,7 +38,7 @@ var client = new Twitter({
 });
 
 function twitter() {
-    var params = { screen_name: '@nicolepolakk', count: '20'};
+    var params = { screen_name: '@nicolepolakk', count: '20' };
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
         if (!error) {
             console.log(tweets);
@@ -48,22 +50,26 @@ checkUserInput(userInput, value);
 //====================
 //Spotify
 //====================
-
-function spotify(){
+function spotify() {
     //do something
-
 }
 //====================
 //Movie
 //====================
-function movie(){
+function movie() {
     //do something
+    request('http://www.omdbapi.com/?t=the+notebook&y=&plot=short&r=json', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var json = JSON.parse(body);
+            console.log("imbd rating: " + json.imdbRating)
+        }
+    })
 
 }
 //====================
-//whatIsSays
+//whatItSays
 //====================
-function whatItSays(){
+function whatItSays() {
     //do something
 
 }
