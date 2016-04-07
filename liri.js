@@ -51,7 +51,6 @@ checkUserInput(userInput, value);
 //Spotify
 //====================
 function spotifyThis(songs) {
-
     spotify.search({ type: 'track', query: songs }, function(err, data) {
         if (err) {
             console.log('Error occurred: ' + err);
